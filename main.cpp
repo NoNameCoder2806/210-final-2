@@ -29,8 +29,9 @@ int main()
     // Call srand() and time()
     srand(time(0));
 
-    // Create a Linked List
-    Node* linkedList = nullptr;
+    // Create a head and tail pointer for the Linked List
+    Node* head = nullptr;
+    Node* tail = nullptr;
 
     // Populate the Linked List with some data
     for (int i = 0; i < 3; i++)
@@ -42,7 +43,33 @@ int main()
         newNode->name = NAMES[rand() % NAMES_SIZE];
         newNode->order = COFFEE[rand() % COFFEE_SIZE];
 
-        // 
+        // Add the Node into the Linked List
+        // If the Linked List is empty
+        if (head == nullptr)
+        {
+            // We let the newNode be both the head and tail
+            head = tail = newNode;
+            newNode->next = nullptr;
+        }
+        // Otherwise, if the Linked List is not empty
+        else
+        {
+            // We add to the tail of the Linked List and set it to be the new tail
+            tail->next = newNode;
+            newNode->next = nullptr;
+            tail = newNode;
+        }
+    }
+
+    // Display the data
+    Node* temp = head;
+    while (temp != nullptr)
+    {
+        // Display the node's data
+        cout << temp->name << ", order: " << temp->order << endl;
+
+        // Advance the pointer
+        temp = temp->next;
     }
 
     return 0;

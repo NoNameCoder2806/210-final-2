@@ -230,6 +230,9 @@ void displayCoffeeBooth(Node* head)
     {
         // Display a message
         cout << "(empty)" << endl;
+
+        // Exit the function
+        return;
     }
 
     // Traverse the Linked List
@@ -299,6 +302,9 @@ void displayMuffinBooth(const deque<Customer>& muffinBooth)
     {
         // Display empty message
         cout << "    (empty)" << endl;
+
+        // Exit the function
+        return;
     }
 
     // Iterate through the deque and display each Customer
@@ -364,6 +370,9 @@ void displayBraceletBooth(const vector<Customer>& braceletBooth)
     {
         // Display empty message
         cout << "    (empty)" << endl;
+
+        // Exit the function
+        return;
     }
 
     // Iterate through the vector and display each Customer
@@ -373,18 +382,75 @@ void displayBraceletBooth(const vector<Customer>& braceletBooth)
     }
 }
 
-
-void simulateDinosaurBooth(list<Customer>& dinosaurBooth);
-void displayDinosaurBooth(const list<Customer>& dinosaurBooth)
+/*
+    simulateDinosaurBooth()
+    Simulate the Dinosaur Toy Booth
+    Arguments:
+        - dinosaurBooth: the Dinosaur Toy Booth list
+    Return: none
+*/
+void simulateDinosaurBooth(list<Customer>& dinosaurBooth)
 {
-    // Check whether 
     // Create an iterator to traverse the list
     auto it = dinosaurBooth.begin();
+
+    // Check whether the list is empty
+    // If the list is not empty
+    if (!dinosaurBooth.empty())
+    {
+        // Serve the first Customer
+        cout << it->name << " is served!" << endl;
+
+        // Remove the first Customer
+        dinosaurBooth.pop_front();
+    }
+    // Otherwise if it is empty, we do nothing
+
+    // And there's always a 50% chance a Customer joins the queue
+    int chance = rand() % 100 + 1;          // Chance ranges rom 1 -> 100
+
+    // Compare the chance
+    if (chance <= JOIN_QUEUE)
+    {
+        // Create a new Customer to store the data
+        Customer temp;
+
+        // Populate the data
+        temp.name = NAMES[rand() % NAMES_SIZE];
+        temp.order = DINOSAURS[rand() % DINOSAURS_SIZE];
+    }
+
+}
+
+/*
+    displayDinosaurBooth()
+    Display the Dinosaur Toy Booth queue
+    Arguments:
+        - dinosaurBooth: the Dinosaur Toy Booth list
+    Return: none
+*/
+void displayDinosaurBooth(const list<Customer>& dinosaurBooth)
+{
+    // Create an iterator to traverse the list
+    auto it = dinosaurBooth.begin();
+
+    // Check whether the list is empty
+    if (it == dinosaurBooth.end())
+    {
+        // Display empty message
+        cout << "    (empty)" << endl;
+
+        // Exit the function
+        return;
+    }
 
     // Iterate through all the Customers
     while (it != dinosaurBooth.end())
     {
         // Display the Customer
         cout << "    [" << it->name << "(" << it->order << ")]" << endl;
+
+        // Advance the iterator
+        ++it;
     }
 }

@@ -18,6 +18,7 @@ const int NAMES_SIZE = 20;
 const int COFFEES_SIZE = 10;
 const int MUFFINS_SIZE = 10;
 const int BRACELETS_SIZE = 10;
+const int DINOSAURS_SIZE = 10;
 const int INITIAL_QUEUE = 3;
 const int ROUNDS = 10;
 const int JOIN_QUEUE = 50;
@@ -39,6 +40,10 @@ const string BRACELETS[10] = {
     "Friendship Beads", "Leather Cuff", "Charm Bracelet", "Braided Cord", "Woven Thread", "Macrame", "Beaded Stretch", "Anklet Bracelet", "Personalized Name", "Rainbow Loom"
 };          // Bracelets
 
+const string DINOSAURS[10] = {
+    "T-Rex", "Triceratops", "Velociraptor", "Stegosaurus", "Spinosaurus", "Brachiosaurus", "Ankylosaurus", "Parasaurolophus", "Pteranodon", "Pachycephalosaurus"
+};          // Dinosaurs
+
 // Functions prototypes
 void simulateCoffeeBooth(Node*& head, Node*& tail);
 void displayCoffeeBooth(Node* head);
@@ -46,6 +51,8 @@ void simulateMuffinBooth(deque<Customer>& muffinBooth);
 void displayMuffinBooth(const deque<Customer>& muffinBooth);
 void simulateBraceletBooth(vector<Customer>& braceletBooth);
 void displayBraceletBooth(const vector<Customer>& braceletBooth);
+void simulateDinosaurBooth(list<Customer>& dinosaurBooth);
+void displayDinosaurBooth(const list<Customer>& dinosaurBooth);
 
 // Main function
 int main()
@@ -62,6 +69,9 @@ int main()
 
     // Create a bracelet booth vector
     vector<Customer> braceletBooth;
+
+    // Create a dinosaur toy booth list
+    list<Customer> dinosaurBooth;
 
     // Populate the Linked List with some data
     for (int i = 0; i < 3; i++)
@@ -116,6 +126,10 @@ int main()
         // Simulate the Bracelet Booth vector
         cout << "Bracelet Booth: " << endl;
         simulateBraceletBooth(braceletBooth);
+
+        // Simulate the Dinosaur Toy Booth list
+        cout << "Dinosaur Toy Booth: " << endl;
+        simulateDinosaurBooth(dinosaurBooth) << endl;
 
         // Display the queues at the end of the simulation
         cout << "2. Queues: " << endl;
@@ -356,5 +370,21 @@ void displayBraceletBooth(const vector<Customer>& braceletBooth)
     for (auto item : braceletBooth)
     {
         cout << "    [" << item.name << "(" << item.order << ")]" << endl;
+    }
+}
+
+
+void simulateDinosaurBooth(list<Customer>& dinosaurBooth);
+void displayDinosaurBooth(const list<Customer>& dinosaurBooth)
+{
+    // Check whether 
+    // Create an iterator to traverse the list
+    auto it = dinosaurBooth.begin();
+
+    // Iterate through all the Customers
+    while (it != dinosaurBooth.end())
+    {
+        // Display the Customer
+        cout << "    [" << it->name << "(" << it->order << ")]" << endl;
     }
 }

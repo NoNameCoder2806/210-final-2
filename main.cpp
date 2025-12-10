@@ -3,21 +3,24 @@
 
 // Libraries
 #include <iostream>
+#include <string>
+#include <queue>
+#include"Node.h"
 using namespace std;
 
 // Constants
-    // Customer names
-    string names[20] = {
-        "Alice", "Bob", "Charlie", "Dana", "Eli", "Fiona", "George", "Hannah", 
-        "Ian", "Jill", "Kevin", "Luna", "Mason", "Nina", "Oscar", "Paula", 
-        "Quinn", "Ryan", "Sophia", "Tyler"
-    };
+const string NAMES[20] = {
+    "Alice", "Bob", "Charlie", "Dana", "Eli", "Fiona", "George", "Hannah", "Ian", "Jill", 
+    "Kevin", "Luna", "Mason", "Nina", "Oscar", "Paula", "Quinn", "Ryan", "Sophia", "Tyler"
+};          // Customer names
 
-    // Customer drinks
-    
+const string COFFEE[10] = {
+    "Espresso", "Cappuccino", "Latte", "Americano", "Flat White", "Mocha", "Macchiato", "Turkish Coffee", "Cold Brew", "Affogato"
+};    
 
 // Main function
 int main()
 {
+    
     return 0;
 }

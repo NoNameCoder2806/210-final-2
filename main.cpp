@@ -17,6 +17,7 @@ using namespace std;
 const int NAMES_SIZE = 20;
 const int COFFEES_SIZE = 10;
 const int MUFFINS_SIZE = 10;
+const int BRACELETS_SIZE = 10;
 const int INITIAL_QUEUE = 3;
 const int ROUNDS = 10;
 const int JOIN_QUEUE = 50;
@@ -33,6 +34,10 @@ const string COFFEES[10] = {
 const string MUFFINS[10] = {
     "Blueberry", "Chocolate Chip", "Banana Nut", "Lemon Poppy Seed", "Bran", "Corn", "Cranberry Orange", "Pumpkin", "Apple Cinnamon", "Double Chocolate"
 };          // Muffins
+
+const string BRACELETS[10] = {
+    "Friendship Beads", "Leather Cuff", "Charm Bracelet", "Braided Cord", "Woven Thread", "Macrame", "Beaded Stretch", "Anklet Bracelet", "Personalized Name", "Rainbow Loom"
+};          // Bracelets
 
 // Functions prototypes
 void simulateCoffeeBooth(Node*& head, Node*& tail);
@@ -52,8 +57,11 @@ int main()
     Node* head = nullptr;
     Node* tail = nullptr;
 
-    // Create muffin booth
+    // Create muffin booth deque
     deque<Customer> muffinBooth;
+
+    // Create a bracelet booth vector
+    vector<Customer> braceletBooth;
 
     // Populate the Linked List with some data
     for (int i = 0; i < 3; i++)
@@ -105,6 +113,10 @@ int main()
         cout << "Muffin Booth: " << endl;
         simulateMuffinBooth(muffinBooth);
 
+        // Simulate the Bracelet Booth vector
+        cout << "Bracelet Booth: " << endl;
+        simulateBraceletBooth(braceletBooth);
+
         // Display the queues at the end of the simulation
         cout << "2. Queues: " << endl;
 
@@ -115,6 +127,10 @@ int main()
         // Display the deque at the end of the simulation
         cout << "Muffin Booth Queue: " << endl;
         displayMuffinBooth(muffinBooth);
+
+        // Display the vector at the end of the simulation
+        cout << "Bracelet Booth Vector: " << endl;
+        displayBraceletBooth(braceletBooth);
 
         // Enter a new line after each simulation
         cout << endl;
@@ -295,9 +311,29 @@ void simulateBraceletBooth(vector<Customer>& braceletBooth)
         cout << braceletBooth.at(0).name << " is served!" << endl;
 
         // Remove the first Customer
-        braceletBooth.pop_front()
+        braceletBooth.erase(braceletBooth.begin());
     }
     // Otherwise if it is empty, we do nothing
+
+    // And there's always a 50% chance a Customer joins the queue
+    int chance = rand() % 100 + 1;          // Chance ranges rom 1 -> 100
+
+    // Compare the chance
+    if (chance <= JOIN_QUEUE)
+    {
+        // Create a new Customer to store the data
+        Customer temp;
+
+        // Populate the data
+        temp.name = NAMES[rand() % NAMES_SIZE];
+        temp.order = BRACELETS[rand() % BRACELETS_SIZE];
+
+        // Add the Customer into the Vector
+        braceletBooth.push_back(temp);
+
+        // Display a message
+        cout << "    " << temp.name << " joins the queue!" << endl;
+    }
 }
 
 /*

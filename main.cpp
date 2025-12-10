@@ -13,7 +13,9 @@ using namespace std;
 // Constants
 const int NAMES_SIZE = 20;
 const int COFFEE_SIZE = 10;
-
+const int INITIAL_QUEUE = 3;
+const int ROUNDS = 10;
+const int JOIN_QUEUE = 50;
 
 const string NAMES[NAMES_SIZE] = {
     "Alice", "Bob", "Charlie", "Dana", "Eli", "Fiona", "George", "Hannah", "Ian", "Jill", 
@@ -23,6 +25,9 @@ const string NAMES[NAMES_SIZE] = {
 const string COFFEE[10] = {
     "Espresso", "Cappuccino", "Latte", "Americano", "Flat White", "Mocha", "Macchiato", "Turkish Coffee", "Cold Brew", "Affogato"
 };          // Coffee
+
+// Functions prototypes
+void simulateCoffeeBooth(Node* head, Node* tail);
 
 // Main function
 int main()
@@ -74,4 +79,23 @@ int main()
     }
 
     return 0;
+}
+
+// Function implementations
+/*
+    simulateCoffeeBooth()
+    Simulate the Coffee Booth 1 time
+    Arguments:
+        - head: the Node at the head of the Linked List
+        - tail: the Node at the tail of the Linked List
+    Return: none
+*/
+void simulateCoffeeBooth(Node* head, Node* tail)
+{
+    // Display a message
+    cout << "    " << head->name << " is served!" << endl;
+    
+    // Remove the first customer (customer is served)
+    Node* temp = head;
+    temp = temp->next;
 }

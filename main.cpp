@@ -129,7 +129,7 @@ int main()
 
         // Simulate the Dinosaur Toy Booth list
         cout << "Dinosaur Toy Booth: " << endl;
-        simulateDinosaurBooth(dinosaurBooth) << endl;
+        simulateDinosaurBooth(dinosaurBooth);
 
         // Display the queues at the end of the simulation
         cout << "2. Queues: " << endl;
@@ -145,6 +145,10 @@ int main()
         // Display the vector at the end of the simulation
         cout << "Bracelet Booth Vector: " << endl;
         displayBraceletBooth(braceletBooth);
+
+        // Display the list at the end of the simulation
+        cout << "Dinosaur Toy Booth List: " << endl;
+        displayDinosaurBooth(dinosaurBooth);
 
         // Enter a new line after each simulation
         cout << endl;
@@ -418,8 +422,13 @@ void simulateDinosaurBooth(list<Customer>& dinosaurBooth)
         // Populate the data
         temp.name = NAMES[rand() % NAMES_SIZE];
         temp.order = DINOSAURS[rand() % DINOSAURS_SIZE];
-    }
 
+        // Add the Customer into the Vector
+        dinosaurBooth.push_back(temp);
+
+        // Display a message
+        cout << "    " << temp.name << " joins the queue!" << endl;
+    }
 }
 
 /*

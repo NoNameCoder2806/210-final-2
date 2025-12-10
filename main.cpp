@@ -4,10 +4,13 @@
 // Libraries
 #include <iostream>
 #include <string>
-#include <queue>
+#include <deque>
+#include <vector>
+#include <list>
 #include <cstdlib>
 #include <ctime>
-#include"Node.h"
+#include "Node.h"
+#include "Customer.h"
 using namespace std;
 
 // Constants
@@ -22,13 +25,19 @@ const string NAMES[NAMES_SIZE] = {
     "Kevin", "Luna", "Mason", "Nina", "Oscar", "Paula", "Quinn", "Ryan", "Sophia", "Tyler"
 };          // Customer names
 
-const string COFFEE[10] = {
+const string COFFEES[10] = {
     "Espresso", "Cappuccino", "Latte", "Americano", "Flat White", "Mocha", "Macchiato", "Turkish Coffee", "Cold Brew", "Affogato"
-};          // Coffee
+};          // Coffees
+
+const string MUFFINS[10] = {
+    "Blueberry", "Chocolate Chip", "Banana Nut", "Lemon Poppy Seed", "Bran", "Corn", "Cranberry Orange", "Pumpkin", "Apple Cinnamon", "Double Chocolate"
+};          // Muffins
 
 // Functions prototypes
 void simulateCoffeeBooth(Node*& head, Node*& tail);
 void displayCoffeeBooth(Node* head);
+void simulateMuffinBooth(deque<Customer>& muffinBooth);
+void displayMuffinBooth(const deque<Customer>& muffinBooth);
 
 // Main function
 int main()
@@ -40,6 +49,9 @@ int main()
     Node* head = nullptr;
     Node* tail = nullptr;
 
+    // Create muffin booth
+    deque<Customer> muffinBooth;
+
     // Populate the Linked List with some data
     for (int i = 0; i < 3; i++)
     {
@@ -48,7 +60,7 @@ int main()
 
         // Populate the data
         newNode->name = NAMES[rand() % NAMES_SIZE];
-        newNode->order = COFFEE[rand() % COFFEE_SIZE];
+        newNode->order = COFFEES[rand() % COFFEE_SIZE];
 
         // Add the Node into the Linked List
         // If the Linked List is empty
@@ -185,3 +197,9 @@ void displayCoffeeBooth(Node* head)
         temp = temp->next;
     }
 }
+
+/*
+    simulate
+*/
+void simulateMuffinBooth(deque<Customer>& muffinBooth);
+void displayMuffinBooth(const deque<Customer>& muffinBooth);

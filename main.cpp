@@ -75,12 +75,19 @@ int main()
     // Simulate the Linked List for 10 Rounds
     for (int i = 0; i < ROUNDS; i++)
     {
+        // Display a message
+        cout << " --- Simulation: " << i + 1 << " --- " << endl;
+
         // Simulate the Linked List
+        cout << "Coffee Booth: " << endl;
         simulateCoffeeBooth(head, tail);
 
         // Display the queue at the end of the simulation
         cout << "Coffee Booth Queue: " << endl;
         displayCoffeeBooth(head);
+
+        // Enter a new line after each simulation
+        cout << endl;
     }
 
     return 0;
@@ -140,6 +147,9 @@ void simulateCoffeeBooth(Node*& head, Node*& tail)
             newNode->next = nullptr;
             tail = newNode;
         }
+
+        // Display a message
+        cout << "    " << newNode->name << " joins the queue!" << endl;
     }
 }
 
@@ -158,28 +168,20 @@ void displayCoffeeBooth(Node* head)
     // Display some space at the beginning of the line
     cout << "    ";
 
+    // Check whether the head was empty
+    if (head == nullptr)
+    {
+        // Display a message
+        cout << "(empty)" << endl;
+    }
+
     // Traverse the Linked List
     while (temp != nullptr)
     {
         // Display the Node's data
-        cout << temp->name << "(" << temp->order << ")";
+        cout << "[" << temp->name << "(" << temp->order << ")]" << endl;
 
-        // Check whether the next Node is null
-        if (temp->next != nullptr)
-        {
-            // Display a comma and space
-            cout << ", ";
-
-            // Advance the pointer
-            temp = temp->next;
-        }
-        // Otherwise, exit the loop
-        else
-        {
-            break;
-        }
+        // Advance the pointer
+        temp = temp->next;
     }
-
-    // Enter a new line
-    cout << endl;
 }

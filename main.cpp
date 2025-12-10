@@ -110,7 +110,7 @@ int main()
     for (int i = 0; i < ROUNDS; i++)
     {
         // Display a message
-        cout << " --- Simulation: " << i + 1 << " --- " << endl;
+        cout << " --- Round: " << i + 1 << " --- " << endl;
 
         // Display the operations
         cout << "1. Operations:" << endl;
@@ -130,6 +130,9 @@ int main()
         // Simulate the Dinosaur Toy Booth list
         cout << "Dinosaur Toy Booth: " << endl;
         simulateDinosaurBooth(dinosaurBooth);
+
+        // Enter a new line
+        cout << endl;
 
         // Display the queues at the end of the simulation
         cout << "2. Queues: " << endl;
@@ -264,7 +267,7 @@ void simulateMuffinBooth(deque<Customer>& muffinBooth)
     if (muffinBooth.size() > 0)
     {
         // Serve the first Customer
-        cout << muffinBooth.at(0).name << " is served!" << endl;
+        cout << "    " << muffinBooth.at(0).name << " is served!" << endl;
 
         // Remove the first Customer
         muffinBooth.pop_front();
@@ -332,7 +335,7 @@ void simulateBraceletBooth(vector<Customer>& braceletBooth)
     if (braceletBooth.size() > 0)
     {
         // Serve the first Customer
-        cout << braceletBooth.at(0).name << " is served!" << endl;
+        cout << "    " << braceletBooth.at(0).name << " is served!" << endl;
 
         // Remove the first Customer
         braceletBooth.erase(braceletBooth.begin());
@@ -403,7 +406,7 @@ void simulateDinosaurBooth(list<Customer>& dinosaurBooth)
     if (!dinosaurBooth.empty())
     {
         // Serve the first Customer
-        cout << it->name << " is served!" << endl;
+        cout << "    " << it->name << " is served!" << endl;
 
         // Remove the first Customer
         dinosaurBooth.pop_front();
@@ -423,7 +426,7 @@ void simulateDinosaurBooth(list<Customer>& dinosaurBooth)
         temp.name = NAMES[rand() % NAMES_SIZE];
         temp.order = DINOSAURS[rand() % DINOSAURS_SIZE];
 
-        // Add the Customer into the Vector
+        // Add the Customer into the List
         dinosaurBooth.push_back(temp);
 
         // Display a message

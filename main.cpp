@@ -39,6 +39,8 @@ void simulateCoffeeBooth(Node*& head, Node*& tail);
 void displayCoffeeBooth(Node* head);
 void simulateMuffinBooth(deque<Customer>& muffinBooth);
 void displayMuffinBooth(const deque<Customer>& muffinBooth);
+void simulateBraceletBooth(vector<Customer>& braceletBooth);
+void displayBraceletBooth(const vector<Customer>& braceletBooth);
 
 // Main function
 int main()
@@ -253,6 +255,13 @@ void simulateMuffinBooth(deque<Customer>& muffinBooth)
     }
 }
 
+/*
+    displayMuffinBooth()
+    Display the Muffin Booth queue
+    Arguments:
+        - muffinBooth: the Muffin Booth deque
+    Return: none
+*/
 void displayMuffinBooth(const deque<Customer>& muffinBooth)
 {
     // Check whether the deque was empty
@@ -264,6 +273,51 @@ void displayMuffinBooth(const deque<Customer>& muffinBooth)
 
     // Iterate through the deque and display each Customer
     for (auto item : muffinBooth)
+    {
+        cout << "    [" << item.name << "(" << item.order << ")]" << endl;
+    }
+}
+
+/*
+    simulateBraceletBooth()
+    Simulate the Bracelet Booth
+    Arguments:
+        - braceletBooth: the Bracelet Booth vector
+    Return: none
+*/
+void simulateBraceletBooth(vector<Customer>& braceletBooth)
+{
+    // Check whether the vector is empty
+    // If it is not empty
+    if (braceletBooth.size() > 0)
+    {
+        // Serve the first Customer
+        cout << braceletBooth.at(0).name << " is served!" << endl;
+
+        // Remove the first Customer
+        braceletBooth.pop_front()
+    }
+    // Otherwise if it is empty, we do nothing
+}
+
+/*
+    displayBraceletBooth()
+    Display the Bracelet Booth queue
+    Arguments:
+        - braceletBooth: the Bracelet Booth vector
+    Return: none
+*/
+void displayBraceletBooth(const vector<Customer>& braceletBooth)
+{
+    // Check whether the vector is empty
+    if (braceletBooth.size() == 0)
+    {
+        // Display empty message
+        cout << "    (empty)" << endl;
+    }
+
+    // Iterate through the vector and display each Customer
+    for (auto item : braceletBooth)
     {
         cout << "    [" << item.name << "(" << item.order << ")]" << endl;
     }

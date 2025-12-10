@@ -15,7 +15,8 @@ using namespace std;
 
 // Constants
 const int NAMES_SIZE = 20;
-const int COFFEE_SIZE = 10;
+const int COFFEES_SIZE = 10;
+const int MUFFINS_SIZE = 10;
 const int INITIAL_QUEUE = 3;
 const int ROUNDS = 10;
 const int JOIN_QUEUE = 50;
@@ -60,7 +61,7 @@ int main()
 
         // Populate the data
         newNode->name = NAMES[rand() % NAMES_SIZE];
-        newNode->order = COFFEES[rand() % COFFEE_SIZE];
+        newNode->order = COFFEES[rand() % COFFEES_SIZE];
 
         // Add the Node into the Linked List
         // If the Linked List is empty
@@ -90,13 +91,20 @@ int main()
         // Display a message
         cout << " --- Simulation: " << i + 1 << " --- " << endl;
 
-        // Simulate the Linked List
+        // Simulate the Coffee Booth Linked List
         cout << "Coffee Booth: " << endl;
         simulateCoffeeBooth(head, tail);
+
+        // Simulate the Muffin Booth deque
+        cout << "Muffin Booth: " << endl;
+        simulateMuffinBooth(muffinBooth);
 
         // Display the queue at the end of the simulation
         cout << "Coffee Booth Queue: " << endl;
         displayCoffeeBooth(head);
+
+        // Display the deque at the end of the simulation
+        cout << ""
 
         // Enter a new line after each simulation
         cout << endl;
@@ -108,10 +116,10 @@ int main()
 // Function implementations
 /*
     simulateCoffeeBooth()
-    Simulate the Coffee Booth 1 time
+    Simulate the Coffee Booth
     Arguments:
-        - head: the Node at the head of the Linked List
-        - tail: the Node at the tail of the Linked List
+        - head: the Node at the head of the Coffee Booth Linked List
+        - tail: the Node at the tail of the Coffee Booth Linked List
     Return: none
 */
 void simulateCoffeeBooth(Node*& head, Node*& tail)
@@ -141,7 +149,7 @@ void simulateCoffeeBooth(Node*& head, Node*& tail)
 
         // Populate the data
         newNode->name = NAMES[rand() % NAMES_SIZE];
-        newNode->order = COFFEE[rand() % COFFEE_SIZE];
+        newNode->order = COFFEES[rand() % COFFEES_SIZE];
 
         // Add the Node into the Linked List
         // If the Linked List is empty
@@ -177,9 +185,6 @@ void displayCoffeeBooth(Node* head)
     // Create and use a Node to traverse the Linked List
     Node* temp = head;
 
-    // Display some space at the beginning of the line
-    cout << "    ";
-
     // Check whether the head was empty
     if (head == nullptr)
     {
@@ -191,7 +196,7 @@ void displayCoffeeBooth(Node* head)
     while (temp != nullptr)
     {
         // Display the Node's data
-        cout << "[" << temp->name << "(" << temp->order << ")]" << endl;
+        cout << "    [" << temp->name << "(" << temp->order << ")]" << endl;
 
         // Advance the pointer
         temp = temp->next;
@@ -199,7 +204,59 @@ void displayCoffeeBooth(Node* head)
 }
 
 /*
-    simulate
+    simulateMuffinBooth()
+    Simulate the Muffin Booth
+    Arguments:
+        - muffinBooth: the Muffin Booth deque
+    Return: none
 */
-void simulateMuffinBooth(deque<Customer>& muffinBooth);
-void displayMuffinBooth(const deque<Customer>& muffinBooth);
+void simulateMuffinBooth(deque<Customer>& muffinBooth)
+{
+    // Check whether the deque is empty
+    // If it is not empty
+    if (muffinBooth.size() > 0)
+    {
+        // Serve the first Customer
+        cout << muffinBooth.at(0).name << " is served!" << endl;
+
+        // Remove the first Customer
+        muffinBooth.pop_front();
+    }
+    // Otherwise if it is empty, we do nothing
+
+    // And there's always a 50% chance a Customer joins the queue
+    int chance = rand() % 100 + 1;          // Chance ranges rom 1 -> 100
+
+    // Compare the chance
+    if (chance <= JOIN_QUEUE)
+    {
+        // Create a new Customer to store the data
+        Customer temp;
+
+        // Populate the data
+        temp.name = NAMES[rand() % NAMES_SIZE];
+        temp.order = MUFFINS[rand() % MUFFINS_SIZE];
+
+        // Add the Customer into the Deque
+        muffinBooth.push_back(temp);
+
+        // Display a message
+        cout << "    " << temp.name << " joins the queue!" << endl;
+    }
+}
+
+void displayMuffinBooth(const deque<Customer>& muffinBooth)
+{
+    // Check whether the deque was empty
+    if (muffinBooth.size() == 0)
+    {
+        // Display empty message
+        cout << "    (empty)" << endl;
+    }
+
+    // Iterate through the deque and display each Customer
+    for (auto item : muffinBooth)
+    {
+        cout << "    [" << item.name << "(" << item.order << ")]" << endl;
+    }
+}

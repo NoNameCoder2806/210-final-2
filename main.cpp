@@ -14,6 +14,7 @@ using namespace std;
 const int NAMES_SIZE = 20;
 const int COFFEE_SIZE = 10;
 
+
 const string NAMES[NAMES_SIZE] = {
     "Alice", "Bob", "Charlie", "Dana", "Eli", "Fiona", "George", "Hannah", "Ian", "Jill", 
     "Kevin", "Luna", "Mason", "Nina", "Oscar", "Paula", "Quinn", "Ryan", "Sophia", "Tyler"

@@ -84,12 +84,16 @@ int main()
     // Display the initial queue
     cout << "Coffee Booth Initial Queue: " << endl;
     displayCoffeeBooth(head);
+    cout << endl;
 
     // Simulate the Linked List for 10 Rounds
     for (int i = 0; i < ROUNDS; i++)
     {
         // Display a message
         cout << " --- Simulation: " << i + 1 << " --- " << endl;
+
+        // Display the operations
+        cout << "1. Operations:" << endl;
 
         // Simulate the Coffee Booth Linked List
         cout << "Coffee Booth: " << endl;
@@ -99,12 +103,16 @@ int main()
         cout << "Muffin Booth: " << endl;
         simulateMuffinBooth(muffinBooth);
 
+        // Display the queues at the end of the simulation
+        cout << "2. Queues: " << endl;
+
         // Display the queue at the end of the simulation
         cout << "Coffee Booth Queue: " << endl;
         displayCoffeeBooth(head);
 
         // Display the deque at the end of the simulation
-        cout << ""
+        cout << "Muffin Booth Queue: " << endl;
+        displayMuffinBooth(muffinBooth);
 
         // Enter a new line after each simulation
         cout << endl;
